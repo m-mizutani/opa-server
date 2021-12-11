@@ -11,6 +11,9 @@ permissions:
 env:
   TAG_NAME: opa-server:${{ github.sha }}
   GCP_IMAGE_NAME: asia-northeast1-docker.pkg.dev/mztn-opa-service/service-images/opa-server:${{ github.sha }}
+  GCP_PROJECT_ID: mztn-opa-service
+  SERVICE_ID: opa-server
+  CLOUD_RUN_REGION: asia-northeast1
 
 jobs:
   build:
@@ -37,6 +40,21 @@ jobs:
         run: gcloud auth configure-docker asia-northeast1-docker.pkg.dev
       - name: Push image
         run: docker push ${{ env.GCP_IMAGE_NAME }}
+      - run: gcloud components install beta
+      - run: |
+          gcloud beta run deploy "${SERVICE_ID}" \
+            --project="${GCP_PROJECT_ID}" \
+            --image "${GCP_IMAGE_NAME}" \
+            --region="${CLOUD_RUN_REGION}" \
+            --platform="managed" \
+            --cpu=1  \
+            --memory=512Mi \
+            --port 8181 \
+            --no-allow-unauthenticated \
+            --ingress=all \
+            --service-account="opa-server@mztn-opa-service.iam.gserviceaccount.com"
+
+      # teardown
       - uses: actions/checkout@v2
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
