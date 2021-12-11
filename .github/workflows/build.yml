@@ -34,7 +34,7 @@ jobs:
       - name: "Login gcloud"
         run: gcloud auth login --brief --cred-file="${{ steps.auth.outputs.credentials_file_path }}"
       - name: Configure Docker
-        run: gcloud auth configure-docker --quiet
+        run: gcloud auth configure-docker asia-northeast1-docker.pkg.dev
       - name: Push image
         run: docker push ${{ env.GCP_IMAGE_NAME }}
       - uses: actions/checkout@v2
