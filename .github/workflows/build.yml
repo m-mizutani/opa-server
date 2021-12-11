@@ -16,7 +16,15 @@ env:
   CLOUD_RUN_REGION: asia-northeast1
 
 jobs:
-  build:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: docker://openpolicyagent/opa:0.34.2-rootless
+        with:
+          args: "test -v ./policy"
+  deploy:
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: checkout
