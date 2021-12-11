@@ -1,4 +1,4 @@
-FROM openpolicyagent/opa:0.34.2-rootless
+FROM openpolicyagent/opa:0.35.0-rootless
 
 COPY policy /policy
 COPY config.yml /
