@@ -51,6 +51,7 @@ jobs:
             --cpu=1  \
             --memory=512Mi \
             --port 8181 \
+            --allow-unauthenticated \
             --ingress=all \
             --service-account="opa-server@mztn-opa-service.iam.gserviceaccount.com"
 
