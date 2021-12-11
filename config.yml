@@ -1,0 +1,8 @@
+services:
+  cloudrun:
+    url: ${URL}
+
+decision_logs:
+  console: true
+
+auth: basic

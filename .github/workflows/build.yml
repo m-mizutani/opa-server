@@ -1,0 +1,39 @@
+name: Build and deploy container image
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  TAG_NAME: opa-server:${{ github.sha }}
+  GCP_IMAGE_NAME: gcr.io/opa-server/opa-server:${{ github.sha }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: Set up Docker buildx
+        uses: docker/setup-buildx-action@v1
+      - name: Build Docker image
+        run: docker build . -t ${{ env.TAG_NAME }}
+      - name: Rename image
+        run: docker tag ${{ env.TAG_NAME }} ${{ env.GCP_IMAGE_NAME }}
+      - name: GCP Authenticate
+        uses: google-github-actions/setup-gcloud@master
+        with:
+          project_id: ${{ env.GCP_PROJECT_ID }}
+          service_account_key: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
+          export_default_credentials: true
+      - name: Configure Docker
+        run: gcloud auth configure-docker --quiet
+      - name: Push image
+        run: docker push ${{ env.GCP_IMAGE_NAME }}
+      - uses: actions/checkout@v2
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_MESSAGE: "Pushed to ${{ env.GITHUB_IMAGE_NAME }}"
