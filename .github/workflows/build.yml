@@ -61,4 +61,4 @@ jobs:
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_MESSAGE: "Pushed to ${{ env.GITHUB_IMAGE_NAME }}"
+          SLACK_MESSAGE: "Deployed OPA server ${{ github.sha }}"
