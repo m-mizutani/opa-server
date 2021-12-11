@@ -10,7 +10,7 @@ permissions:
 
 env:
   TAG_NAME: opa-server:${{ github.sha }}
-  GCP_IMAGE_NAME: asia-northeast1-docker.pkg.dev/mztn-opa-service/opa-server/opa-server:${{ github.sha }}
+  GCP_IMAGE_NAME: asia-northeast1-docker.pkg.dev/mztn-opa-service/service-images/opa-server:${{ github.sha }}
 
 jobs:
   build:
