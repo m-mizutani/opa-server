@@ -19,7 +19,6 @@ allowed_method {
 
 # Check path
 allowed_path {
-    print(input.path)
     input.path[0] == "v1"
     input.path[1] == "data"
 }
