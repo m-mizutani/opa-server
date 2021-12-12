@@ -64,7 +64,7 @@ authz_failed_results[failed] {
 				"path": ["v1", "policy"],
 				"method": "GET",
 			},
-			"exp": true,
+			"exp": false,
 		},
 	]
 
