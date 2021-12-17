@@ -8,5 +8,6 @@ ENTRYPOINT [ \
     "-c", "config.yml", \
     "--authorization",  "basic", \
     "--ignore", "testdata", \
+    "--ignore", "*_test.rego", \
     "/policy" \
 ]
