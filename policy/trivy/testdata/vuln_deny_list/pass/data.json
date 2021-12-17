@@ -1,0 +1,85 @@
+{
+  "SchemaVersion": 2,
+  "ArtifactName": ".",
+  "ArtifactType": "filesystem",
+  "Metadata": {
+    "ImageConfig": {
+      "architecture": "",
+      "created": "0001-01-01T00:00:00Z",
+      "os": "",
+      "rootfs": {
+        "type": "",
+        "diff_ids": null
+      },
+      "config": {}
+    }
+  },
+  "Results": [
+    {
+      "Target": "assets/node_modules/browserify-zlib/yarn.lock",
+      "Class": "lang-pkgs",
+      "Type": "yarn",
+      "Vulnerabilities": [
+        {
+          "VulnerabilityID": "GHSA-g95f-p29q-9xw4",
+          "PkgName": "braces",
+          "InstalledVersion": "0.1.5",
+          "FixedVersion": "2.3.1",
+          "Layer": {},
+          "PrimaryURL": "https://github.com/advisories/GHSA-g95f-p29q-9xw4",
+          "Title": "Regular Expression Denial of Service in braces",
+          "Description": "Versions of `braces` prior to 2.3.1 are vulnerable to Regular Expression Denial of Service (ReDoS). Untrusted input may cause catastrophic backtracking while matching regular expressions. This can cause the application to be unresponsive leading to Denial of Service.\n\n\n## Recommendation\n\nUpgrade to version 2.3.1 or higher.",
+          "Severity": "LOW",
+          "References": [
+            "https://github.com/advisories/GHSA-g95f-p29q-9xw4",
+            "https://github.com/micromatch/braces/commit/abdafb0cae1e0c00f184abbadc692f4eaa98f451",
+            "https://snyk.io/vuln/npm:braces:20180219",
+            "https://www.npmjs.com/advisories/786"
+          ]
+        },
+        {
+          "VulnerabilityID": "CVE-2019-16892",
+          "PkgName": "rubyzip",
+          "InstalledVersion": "1.2.1",
+          "FixedVersion": "\u003e= 1.3.0",
+          "Layer": {},
+          "SeveritySource": "ruby-advisory-db",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2019-16892",
+          "Title": "cfme: rubygem-rubyzip denial of service via crafted ZIP file",
+          "Description": "In Rubyzip before 1.3.0, a crafted ZIP file can bypass application checks on ZIP entry sizes because data about the uncompressed size can be spoofed. This allows attackers to cause a denial of service (disk consumption).",
+          "Severity": "MEDIUM",
+          "CweIDs": ["CWE-400"],
+          "CVSS": {
+            "nvd": {
+              "V2Vector": "AV:N/AC:M/Au:N/C:N/I:N/A:C",
+              "V3Vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
+              "V2Score": 7.1,
+              "V3Score": 5.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
+              "V3Score": 5.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/errata/RHBA-2019:4047",
+            "https://access.redhat.com/errata/RHSA-2019:4201",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-16892",
+            "https://github.com/advisories/GHSA-5m2v-hc64-56h6",
+            "https://github.com/jdleesmiller/ruby-advisory-db/blob/master/gems/rubyzip/CVE-2019-16892.yml",
+            "https://github.com/rubyzip/rubyzip/commit/4167f0ce67e42b082605bca75c7bdfd01eb23804",
+            "https://github.com/rubyzip/rubyzip/commit/7849f7362ab0cd23d5730ef8b6f2c39252da2285",
+            "https://github.com/rubyzip/rubyzip/commit/97cb6aefe6d12bd2429d7a2e119ccb26f259d71d",
+            "https://github.com/rubyzip/rubyzip/pull/403",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/J45KSFPP6DFVWLC7Z73L7SX735CKZYO6/",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/MWWPORMSBHZTMP4PGF4DQD22TTKBQMMC/",
+            "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/X255K6ZBAQC462PQN2ND5HOTTQEJ2G2X/",
+            "https://nvd.nist.gov/vuln/detail/CVE-2019-16892"
+          ],
+          "PublishedDate": "2019-09-25T22:15:00Z",
+          "LastModifiedDate": "2019-11-22T03:15:00Z"
+        }
+      ]
+    }
+  ]
+}
