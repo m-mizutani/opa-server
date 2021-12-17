@@ -6,7 +6,6 @@ COPY config.yml /
 ENTRYPOINT [ \
     "/opa", "run", "-s", \
     "-c", "config.yml", \
-    "--authorization",  "basic", \
     "--ignore", "testdata", \
     "--ignore", "*_test.rego", \
     "/policy" \
