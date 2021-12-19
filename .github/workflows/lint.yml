@@ -1,0 +1,17 @@
+name: Lint
+
+on: [push]
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout upstream repo
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
+      - uses: m-mizutani/regolint-action@main
+        with:
+          lint_policy: ./lint
+          rego_path: ./policy
