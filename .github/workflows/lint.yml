@@ -11,6 +11,6 @@ jobs:
         uses: actions/checkout@v2
         with:
           ref: ${{ github.head_ref }}
-      - uses: docker://m-mizutani/regolint:latest
+      - uses: docker://ghcr.io/m-mizutani/regolint:latest
         with:
           args: "-p ./lint ./policy"
